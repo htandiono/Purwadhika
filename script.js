@@ -77,8 +77,15 @@ async function renderModuleCard(moduleItem) {
             exercises.forEach(exercise => {
                 const link = document.createElement('a');
                 link.className = 'exercise-link';
+
                 // Construct the local relative path to the index.html
-                link.href = `./${moduleItem.name}/${exercise.name}/index.html`;
+                let indexPath = 'index.html';
+                // Direct specific built projects to their dist folder
+                if (exercise.name === 'Exercise-01-Todo-List') {
+                    indexPath = 'dist/index.html';
+                }
+
+                link.href = `./${moduleItem.name}/${exercise.name}/${indexPath}`;
                 link.textContent = exercise.name;
                 exerciseList.appendChild(link);
             });
