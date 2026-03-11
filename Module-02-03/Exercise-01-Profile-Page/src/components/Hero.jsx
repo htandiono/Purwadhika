@@ -15,7 +15,7 @@ const Hero = () => {
                     <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold tracking-wider mb-4 uppercase">Senior Full-Stack Developer</span>
                     <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-slate-900 leading-tight">
                         Building smart, <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">scalable digital systems.</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">scalable digital systems.</span>
                     </h1>
                     <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl">
                         I help businesses turn complex workflows into simple, automated solutions. With 12+ years of experience, I design and develop complete end-to-end systems — backend, frontend, mobile apps, APIs, and databases.
@@ -67,7 +67,7 @@ const Hero = () => {
                 </div>
 
                 {/* Decorative elements */}
-                <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-full blur-3xl opacity-70"></div>
+                <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-linear-to-tr from-blue-100 to-indigo-50 rounded-full blur-3xl opacity-70"></div>
             </motion.div>
         </section>
     );

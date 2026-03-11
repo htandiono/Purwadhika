@@ -42,6 +42,8 @@ export default function TodoItem({ todo, toggleTodo }) {
             />
             <label
                 htmlFor={`todo-${todo.id}`}
+                // className={`flex-grow cursor-pointer text-todo-light-text dark:text-todo-dark-text font-medium transition-colors 
+                //  ${todo.completed ? "line-through text-gray-400 dark:text-gray-500" : ""}`}
                 className={cn(
                     "flex-grow cursor-pointer text-todo-light-text dark:text-todo-dark-text font-medium transition-colors",
                     todo.completed && "line-through text-gray-400 dark:text-gray-500"
