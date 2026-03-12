@@ -14,7 +14,7 @@ export default function TodoFilters({ filter, setFilter, clearCompleted, itemsLe
                         <button
                             key={btn}
                             onClick={() => setFilter(btn)}
-                            className={`font-bold transition-colors ${filter === btn
+                            className={`font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-todo-primary rounded px-2 py-1 ${filter === btn
                                     ? 'text-todo-primary'
                                     : 'hover:text-todo-light-text dark:hover:text-todo-dark-text'
                                 }`}
@@ -27,7 +27,7 @@ export default function TodoFilters({ filter, setFilter, clearCompleted, itemsLe
 
             <button
                 onClick={clearCompleted}
-                className="hover:text-todo-light-text dark:hover:text-todo-dark-text transition-colors"
+                className="hover:text-todo-light-text dark:hover:text-todo-dark-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-todo-primary rounded px-2 py-1"
             >
                 Clear Completed
             </button>

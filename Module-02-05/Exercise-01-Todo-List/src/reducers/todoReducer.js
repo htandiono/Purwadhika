@@ -1,3 +1,5 @@
+import { arrayMove } from '@dnd-kit/sortable';
+
 export const initialState = {
   todos: [
     { id: '1', text: 'Complete online JavaScript course', completed: true },
@@ -50,9 +52,12 @@ export const todoReducer = (state, action) => {
       };
     }
     case 'REORDER_TODOS': {
+      const { activeId, overId } = action.payload;
+      const oldIndex = state.todos.findIndex((item) => item.id === activeId);
+      const newIndex = state.todos.findIndex((item) => item.id === overId);
       return {
         ...state,
-        todos: action.payload,
+        todos: arrayMove(state.todos, oldIndex, newIndex),
       };
     }
     default:

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { X } from 'lucide-react';
@@ -9,7 +9,7 @@ export function cn(...inputs) {
     return twMerge(clsx(inputs));
 }
 
-export default function TodoItem({ todo, toggleTodo, deleteTodo }) {
+const TodoItem = memo(function TodoItem({ todo, toggleTodo, deleteTodo }) {
     const {
         attributes,
         listeners,
@@ -31,8 +31,8 @@ export default function TodoItem({ todo, toggleTodo, deleteTodo }) {
             {...attributes}
             {...listeners}
             className={cn(
-                "group flex items-center gap-4 px-5 py-4 border-b border-gray-200 dark:border-gray-700 bg-todo-light-surface dark:bg-todo-dark-surface cursor-grab active:cursor-grabbing",
-                isDragging && "opacity-50 z-10 shadow-lg"
+                "group flex items-center gap-4 px-5 py-4 border-b border-gray-200 dark:border-gray-700 bg-todo-light-surface dark:bg-todo-dark-surface cursor-grab active:cursor-grabbing hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-todo-primary relative z-10",
+                isDragging ? "opacity-90 shadow-2xl scale-[1.03] ring-1 ring-todo-primary ring-offset-2 dark:ring-offset-todo-dark-bg ring-offset-todo-light-bg z-50 rounded-md" : "active:scale-[1.01]"
             )}
         >
             <input
@@ -40,7 +40,7 @@ export default function TodoItem({ todo, toggleTodo, deleteTodo }) {
                 id={`todo-${todo.id}`}
                 checked={todo.completed}
                 onChange={() => toggleTodo(todo.id)}
-                className="todo-checkbox flex-shrink-0"
+                className="todo-checkbox flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-todo-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-todo-dark-surface"
                 aria-label={todo.text}
             />
             <span
@@ -64,11 +64,13 @@ export default function TodoItem({ todo, toggleTodo, deleteTodo }) {
                     e.stopPropagation();
                     deleteTodo(todo.id);
                 }}
-                className="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-gray-400 hover:text-red-500 dark:hover:text-red-400 focus:opacity-100 flex-shrink-0"
+                className="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-gray-400 hover:text-red-500 dark:hover:text-red-400 focus:opacity-100 flex-shrink-0 rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-todo-primary"
                 aria-label="Delete todo"
             >
                 <X size={20} />
             </button>
         </div>
     );
-}
+});
+
+export default TodoItem;

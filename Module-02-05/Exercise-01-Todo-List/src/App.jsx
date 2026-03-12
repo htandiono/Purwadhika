@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -22,38 +22,54 @@ import bgDarkDesktop from './assets/bg-dark.png';
 import { useTheme } from './context/ThemeContext';
 import { todoReducer, initialState } from './reducers/todoReducer';
 
+const init = (initialState) => {
+  const savedTodos = localStorage.getItem('todos');
+  if (savedTodos) {
+    return { ...initialState, todos: JSON.parse(savedTodos) };
+  }
+  return initialState;
+};
+
 function App() {
   const { isDarkMode } = useTheme();
-  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const [state, dispatch] = useReducer(todoReducer, initialState, init);
   const { todos, filter } = state;
 
-  const addTodo = (text) => {
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const addTodo = useCallback((text) => {
     dispatch({ type: 'ADD_TODO', payload: text });
-  };
+  }, []);
 
-  const toggleTodo = (id) => {
+  const toggleTodo = useCallback((id) => {
     dispatch({ type: 'TOGGLE_TODO', payload: id });
-  };
+  }, []);
 
-  const deleteTodo = (id) => {
+  const deleteTodo = useCallback((id) => {
     dispatch({ type: 'DELETE_TODO', payload: id });
-  };
+  }, []);
 
-  const clearCompleted = () => {
+  const clearCompleted = useCallback(() => {
     dispatch({ type: 'CLEAR_COMPLETED' });
-  };
+  }, []);
 
-  const setFilter = (newFilter) => {
+  const setFilter = useCallback((newFilter) => {
     dispatch({ type: 'SET_FILTER', payload: newFilter });
-  };
+  }, []);
 
-  const filteredTodos = todos.filter((todo) => {
-    if (filter === 'Active') return !todo.completed;
-    if (filter === 'Completed') return todo.completed;
-    return true; // All
-  });
+  const filteredTodos = useMemo(() => {
+    return todos.filter((todo) => {
+      if (filter === 'Active') return !todo.completed;
+      if (filter === 'Completed') return todo.completed;
+      return true; // All
+    });
+  }, [todos, filter]);
 
-  const activeCount = todos.filter((todo) => !todo.completed).length;
+  const activeCount = useMemo(() => {
+    return todos.filter((todo) => !todo.completed).length;
+  }, [todos]);
 
   // DND Kit logic
   const sensors = useSensors(
@@ -67,16 +83,13 @@ function App() {
     })
   );
 
-  const handleDragEnd = (event) => {
+  const handleDragEnd = useCallback((event) => {
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
-      const oldIndex = todos.findIndex((item) => item.id === active.id);
-      const newIndex = todos.findIndex((item) => item.id === over.id);
-
-      dispatch({ type: 'REORDER_TODOS', payload: arrayMove(todos, oldIndex, newIndex) });
+      dispatch({ type: 'REORDER_TODOS', payload: { activeId: active.id, overId: over.id } }); 
     }
-  };
+  }, [dispatch]);
 
   // Background Image Container
   const bgStyles = isDarkMode
