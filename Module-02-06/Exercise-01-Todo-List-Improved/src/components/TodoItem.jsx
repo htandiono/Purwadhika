@@ -10,28 +10,36 @@ export function cn(...inputs) {
 }
 
 const TodoItem = memo(function TodoItem({ todo, toggleTodo, deleteTodo, editTodo }) {
+    // Local state to manage whether this specific item is currently being edited
     const [isEditing, setIsEditing] = useState(false);
+    // Local state to track the live typing before it is officially saved to the global Reducer
     const [editText, setEditText] = useState(todo.text);
+    // Allows us to directly manipulate the raw DOM element (in this case, auto-focusing the input box)
     const editInputRef = useRef(null);
 
+    // Whenever 'isEditing' becomes true, this effect runs and forces the user's cursor into the text box
     useEffect(() => {
         if (isEditing && editInputRef.current) {
             editInputRef.current.focus();
         }
     }, [isEditing]);
 
+    // Called when the user clicks away (onBlur) or hits Enter.
     const handleEditSave = () => {
+        // Only save to the global Reducer if it isn't an empty string, and it actually changed
         if (editText.trim().length > 0 && editText !== todo.text) {
             editTodo(todo.id, editText.trim());
         } else {
-            setEditText(todo.text); // Reset if blank
+            setEditText(todo.text); // Reset back to original text if blank or unchanged
         }
-        setIsEditing(false);
+        setIsEditing(false); // Close the edit box
     };
 
+    // Listeners for keyboard shortcuts while inside the edit text box
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter') handleEditSave();
+        if (e.key === 'Enter') handleEditSave(); // Save and close
         if (e.key === 'Escape') {
+            // Cancel and close
             setEditText(todo.text);
             setIsEditing(false);
         }
@@ -70,13 +78,17 @@ const TodoItem = memo(function TodoItem({ todo, toggleTodo, deleteTodo, editTodo
                 className="todo-checkbox flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-todo-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-todo-dark-surface"
                 aria-label={todo.text}
             />
+            {/* 
+                If isEditing is true, we render an active text <input> box so the user can type.
+                If false, we render a normal <span> text element that listens for a double click. 
+            */}
             {isEditing ? (
                 <input
                     ref={editInputRef}
                     type="text"
                     value={editText}
                     onChange={(e) => setEditText(e.target.value)}
-                    onBlur={handleEditSave}
+                    onBlur={handleEditSave} // Saves automatically if user clicks away from the box
                     onKeyDown={handleKeyDown}
                     className="flex-grow bg-transparent text-todo-light-text dark:text-todo-dark-text font-medium border-b-2 border-todo-primary focus:outline-none px-0 py-0"
                 />

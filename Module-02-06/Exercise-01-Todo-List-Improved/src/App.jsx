@@ -23,19 +23,20 @@ import bgDarkDesktop from './assets/bg-dark.png';
 import { useTheme } from './context/ThemeContext';
 import { todoReducer, initialState } from './reducers/todoReducer';
 
+// This init function is called exactly once when the App first mounts.
+// It checks localStorage for saved data, and safely injects it into the default state.
 const init = (initialState) => {
   try {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
-        const parsedTodos = JSON.parse(savedTodos);
-        if (Array.isArray(parsedTodos)) {
-            // Migrate legacy todos: previous versions used 'title' instead of 'text'
-            const migratedTodos = parsedTodos.map(todo => ({
-            ...todo,
-            text: todo.text || todo.title || 'Untitled Task',
-            }));
-            return { ...initialState, todos: migratedTodos };
-        }
+      const parsedTodos = JSON.parse(savedTodos);
+      if (Array.isArray(parsedTodos)) {
+        const migratedTodos = parsedTodos.map(todo => ({
+          ...todo,
+          text: todo.text || todo.title || 'Untitled Task',
+        }));
+        return { ...initialState, todos: migratedTodos };
+      }
     }
   } catch (e) {
     console.error("Failed to parse todos from local storage", e);
@@ -45,7 +46,11 @@ const init = (initialState) => {
 
 function App() {
   const { isDarkMode } = useTheme();
+
+  // We pass it our reducer function, our default empty state, and our init function to load local data.
   const [state, dispatch] = useReducer(todoReducer, initialState, init);
+
+  // Destructure the properties from our global state object for easier access
   const { todos, filter, searchQuery, sortOrder } = state;
 
   useEffect(() => {
@@ -84,6 +89,8 @@ function App() {
     dispatch({ type: 'SET_SORT_ORDER', payload: order });
   }, []);
 
+  // useMemo caches the results of this expensive calculation so it only re-runs
+  // when `todos`, `filter`, `searchQuery`, or `sortOrder` change.
   const filteredTodos = useMemo(() => {
     return todos
       .filter((todo) => {
@@ -103,7 +110,7 @@ function App() {
         // 3. Sorting
         const dateA = a.createdAt || 0;
         const dateB = b.createdAt || 0;
-        
+
         if (sortOrder === 'newest') {
           return dateB - dateA;
         } else {
@@ -132,7 +139,7 @@ function App() {
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
-      dispatch({ type: 'REORDER_TODOS', payload: { activeId: active.id, overId: over.id } }); 
+      dispatch({ type: 'REORDER_TODOS', payload: { activeId: active.id, overId: over.id } });
     }
   }, [dispatch]);
 
@@ -167,7 +174,7 @@ function App() {
 
         <TodoInput addTodo={addTodo} />
 
-        <TodoControls 
+        <TodoControls
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           sortOrder={sortOrder}

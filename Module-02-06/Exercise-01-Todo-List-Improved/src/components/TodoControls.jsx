@@ -4,7 +4,11 @@ import { Search, ArrowUpDown } from 'lucide-react';
 export default function TodoControls({ searchQuery, setSearchQuery, sortOrder, setSortOrder }) {
     return (
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            {/* Search Input */}
+            {/* 
+                Search Input 
+                Binds directly to the App.jsx 'searchQuery' state. As the user types,
+                the App's 'filteredTodos' hook reactively and strips out non-matching tasks.
+            */}
             <div className="relative flex-grow">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                     <Search size={18} />
@@ -18,7 +22,11 @@ export default function TodoControls({ searchQuery, setSearchQuery, sortOrder, s
                 />
             </div>
 
-            {/* Sort Select */}
+            {/* 
+                Sort Select Dropdown
+                Binds to 'sortOrder' state. The App.jsx filteredTodos block runs an Array.sort()
+                on the timestamps based on whether the user selects 'newest' or 'oldest'.
+            */}
             <div className="relative min-w-[140px]">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                     <ArrowUpDown size={18} />
