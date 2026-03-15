@@ -28,12 +28,14 @@ const init = (initialState) => {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
         const parsedTodos = JSON.parse(savedTodos);
-        // Migrate legacy todos: previous versions used 'title' instead of 'text'
-        const migratedTodos = parsedTodos.map(todo => ({
-          ...todo,
-          text: todo.text || todo.title || 'Untitled Task',
-        }));
-        return { ...initialState, todos: migratedTodos };
+        if (Array.isArray(parsedTodos)) {
+            // Migrate legacy todos: previous versions used 'title' instead of 'text'
+            const migratedTodos = parsedTodos.map(todo => ({
+            ...todo,
+            text: todo.text || todo.title || 'Untitled Task',
+            }));
+            return { ...initialState, todos: migratedTodos };
+        }
     }
   } catch (e) {
     console.error("Failed to parse todos from local storage", e);
