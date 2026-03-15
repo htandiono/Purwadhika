@@ -81,7 +81,7 @@ async function renderModuleCard(moduleItem) {
                 // Construct the local relative path to the index.html
                 let indexPath = 'index.html';
                 // Direct specific built projects to their dist folder
-                if (exercise.name === 'Exercise-01-Todo-List' || exercise.name === 'Exercise-01-Profile-Page') {
+                if (exercise.name === 'Exercise-01-Todo-List' || exercise.name === 'Exercise-01-Profile-Page' || exercise.name === 'Exercise-01-Todo-List-Improved') {
                     indexPath = 'dist/index.html';
                 }
 
