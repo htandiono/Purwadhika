@@ -24,9 +24,19 @@ import { useTheme } from './context/ThemeContext';
 import { todoReducer, initialState } from './reducers/todoReducer';
 
 const init = (initialState) => {
-  const savedTodos = localStorage.getItem('todos');
-  if (savedTodos) {
-    return { ...initialState, todos: JSON.parse(savedTodos) };
+  try {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+        const parsedTodos = JSON.parse(savedTodos);
+        // Migrate legacy todos: previous versions used 'title' instead of 'text'
+        const migratedTodos = parsedTodos.map(todo => ({
+          ...todo,
+          text: todo.text || todo.title || 'Untitled Task',
+        }));
+        return { ...initialState, todos: migratedTodos };
+    }
+  } catch (e) {
+    console.error("Failed to parse todos from local storage", e);
   }
   return initialState;
 };
@@ -80,7 +90,8 @@ function App() {
         if (filter === 'Completed' && !todo.completed) return false;
 
         // 2. Search Filter
-        if (searchQuery && !todo.text.toLowerCase().includes(searchQuery.toLowerCase())) {
+        const textToSearch = todo.text || '';
+        if (searchQuery && !textToSearch.toLowerCase().includes(searchQuery.toLowerCase())) {
           return false;
         }
 
