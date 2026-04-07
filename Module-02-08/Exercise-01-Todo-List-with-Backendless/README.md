@@ -59,9 +59,9 @@ We split our global state into three "slices" to keep things tidy:
 - **`uiSlice`**: Manages search filters and sorting preferences.
 
 ### How we talk to the Cloud (Backendless)
-We use a library called **Axios** to send messages to the server. Here’s what makes our connection special:
+We use a library called **Axios** to send messages to the server. Here’s the breakdown of our API calls:
 
-1.  **The Security Interceptor**: We never manually add our login key to every request. Instead, we have a "helper" that does it automatically.
+1.  **The Security Interceptor**: We never manually add our login key to every request. Instead, we have a "helper" that does it automatically. Please refer to the key logic code snippets on point 5 below.
 2.  **Relational Linking**: When we create a task, we don't just save it; we tell Backendless to "link" it specifically to our user account.
 3.  **Bulk Deletion**: When we "Clear Completed," we use a single efficient command that tells the database to find and remove multiple tasks at once.
 
