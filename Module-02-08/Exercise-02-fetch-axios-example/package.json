@@ -1,0 +1,19 @@
+{
+  "name": "exercise-02-fetch-axios-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/react": "^19.2.14",
+    "axios": "^1.14.0",
+    "react": "^19.2.4",
+    "typescript": "^6.0.2"
+  }
+}
