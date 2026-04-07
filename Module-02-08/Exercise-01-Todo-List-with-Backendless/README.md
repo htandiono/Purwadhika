@@ -72,7 +72,7 @@ We use a library called **Axios** to send messages to the server. There are 3 im
 Here are some of the most important logic blocks that make our app work:
 
 ### The Security Interceptor
-This code automatically adds our login token to every message we send to the database.
+Based on the documentation that can be found here https://axios-http.com/docs/interceptors this code automatically adds our login token to every message before we send it to the database.
 ```javascript
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("user-token");
@@ -145,4 +145,12 @@ addTodo: async (text) => {
   }
   set({ todos: [savedTodo, ...get().todos] });
 }
+
+---
+
+## 6. Backendless Table Schema
+
+Below is the database schema for our `Users` and `Todo` tables, showing the one-to-many relationship where each user can own multiple todo items.
+
+![Backendless Table Schema](./src/assets/users-schema.png)
 ```
