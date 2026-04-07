@@ -145,6 +145,7 @@ addTodo: async (text) => {
   }
   set({ todos: [savedTodo, ...get().todos] });
 }
+```
 
 ---
 
@@ -153,4 +154,4 @@ addTodo: async (text) => {
 Below is the database schema for our `Users` and `Todo` tables, showing the one-to-many relationship where each user can own multiple todo items.
 
 ![Backendless Table Schema](./src/assets/users-schema.png)
-```
+
