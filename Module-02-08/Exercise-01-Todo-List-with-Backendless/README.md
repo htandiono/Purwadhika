@@ -59,7 +59,7 @@ We split our global state into three "slices" to keep things tidy:
 - **`uiSlice`**: Manages search filters and sorting preferences.
 
 ### How we talk to the Cloud (Backendless)
-We use a library called **Axios** to send messages to the server. Here’s the breakdown of our API calls:
+We use a library called **Axios** to send messages to the server. There are 3 implementation pattern for Backendless API calls based on the documentation that can be found here https://backendless.com/docs/rest/setup.html and we use the third pattern **Backendless native endpoint** for its ease of implementation and clarity. Here’s the breakdown of our API calls:
 
 1.  **The Security Interceptor**: We never manually add our login key to every request. Instead, we have a "helper" that does it automatically. Please refer to the key logic code snippets on point 5 below.
 2.  **Relational Linking**: When we create a task, we don't just save it; we tell Backendless to "link" it specifically to our user account.
