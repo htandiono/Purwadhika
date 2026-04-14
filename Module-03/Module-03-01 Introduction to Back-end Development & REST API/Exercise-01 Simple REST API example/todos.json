@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "title": "Belajar Express.js",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "title": "Membuat REST API",
+    "completed": true
+  }
+]
