@@ -1,0 +1,290 @@
+[
+  {
+    "id": "SCH-001",
+    "routeId": "JKT-SUB",
+    "departureDate": "2026-04-25T06:00:00",
+    "arrivalDate": "2026-04-25T18:00:00",
+    "availableSeats": 25,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-002",
+    "routeId": "JKT-SUB",
+    "departureDate": "2026-04-25T20:00:00",
+    "arrivalDate": "2026-04-26T08:00:00",
+    "availableSeats": 10,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-003",
+    "routeId": "JKT-SUB",
+    "departureDate": "2026-05-01T06:00:00",
+    "arrivalDate": "2026-05-01T18:00:00",
+    "availableSeats": 38,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-004",
+    "routeId": "JKT-SUB",
+    "departureDate": "2026-05-01T20:00:00",
+    "arrivalDate": "2026-05-02T08:00:00",
+    "availableSeats": 0,
+    "totalSeats": 40,
+    "status": "cancelled"
+  },
+  {
+    "id": "SCH-005",
+    "routeId": "JKT-BDG",
+    "departureDate": "2026-04-20T07:00:00",
+    "arrivalDate": "2026-04-20T10:00:00",
+    "availableSeats": 15,
+    "totalSeats": 32,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-006",
+    "routeId": "JKT-BDG",
+    "departureDate": "2026-04-20T12:00:00",
+    "arrivalDate": "2026-04-20T15:00:00",
+    "availableSeats": 30,
+    "totalSeats": 32,
+    "status": "delayed"
+  },
+  {
+    "id": "SCH-007",
+    "routeId": "JKT-BDG",
+    "departureDate": "2026-04-25T07:00:00",
+    "arrivalDate": "2026-04-25T10:00:00",
+    "availableSeats": 20,
+    "totalSeats": 32,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-008",
+    "routeId": "JKT-BDG",
+    "departureDate": "2026-05-01T07:00:00",
+    "arrivalDate": "2026-05-01T10:00:00",
+    "availableSeats": 5,
+    "totalSeats": 32,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-009",
+    "routeId": "JKT-SMG",
+    "departureDate": "2026-04-22T08:00:00",
+    "arrivalDate": "2026-04-22T15:00:00",
+    "availableSeats": 18,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-010",
+    "routeId": "JKT-SMG",
+    "departureDate": "2026-04-22T21:00:00",
+    "arrivalDate": "2026-04-23T04:00:00",
+    "availableSeats": 35,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-011",
+    "routeId": "JKT-SMG",
+    "departureDate": "2026-05-01T08:00:00",
+    "arrivalDate": "2026-05-01T15:00:00",
+    "availableSeats": 2,
+    "totalSeats": 40,
+    "status": "delayed"
+  },
+  {
+    "id": "SCH-012",
+    "routeId": "JKT-YOG",
+    "departureDate": "2026-04-21T07:00:00",
+    "arrivalDate": "2026-04-21T15:30:00",
+    "availableSeats": 22,
+    "totalSeats": 36,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-013",
+    "routeId": "JKT-YOG",
+    "departureDate": "2026-04-28T19:00:00",
+    "arrivalDate": "2026-04-29T03:30:00",
+    "availableSeats": 36,
+    "totalSeats": 36,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-014",
+    "routeId": "JKT-YOG",
+    "departureDate": "2026-05-01T07:00:00",
+    "arrivalDate": "2026-05-01T15:30:00",
+    "availableSeats": 0,
+    "totalSeats": 36,
+    "status": "cancelled"
+  },
+  {
+    "id": "SCH-015",
+    "routeId": "JKT-YOG",
+    "departureDate": "2026-05-01T19:00:00",
+    "arrivalDate": "2026-05-02T03:30:00",
+    "availableSeats": 12,
+    "totalSeats": 36,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-016",
+    "routeId": "SUB-MLG",
+    "departureDate": "2026-04-20T06:00:00",
+    "arrivalDate": "2026-04-20T08:00:00",
+    "availableSeats": 10,
+    "totalSeats": 28,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-017",
+    "routeId": "SUB-MLG",
+    "departureDate": "2026-04-20T10:00:00",
+    "arrivalDate": "2026-04-20T12:00:00",
+    "availableSeats": 28,
+    "totalSeats": 28,
+    "status": "delayed"
+  },
+  {
+    "id": "SCH-018",
+    "routeId": "SUB-MLG",
+    "departureDate": "2026-04-25T06:00:00",
+    "arrivalDate": "2026-04-25T08:00:00",
+    "availableSeats": 14,
+    "totalSeats": 28,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-019",
+    "routeId": "SUB-MLG",
+    "departureDate": "2026-05-01T06:00:00",
+    "arrivalDate": "2026-05-01T08:00:00",
+    "availableSeats": 20,
+    "totalSeats": 28,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-020",
+    "routeId": "SUB-JKT",
+    "departureDate": "2026-04-22T18:00:00",
+    "arrivalDate": "2026-04-23T06:00:00",
+    "availableSeats": 30,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-021",
+    "routeId": "SUB-JKT",
+    "departureDate": "2026-04-25T18:00:00",
+    "arrivalDate": "2026-04-26T06:00:00",
+    "availableSeats": 8,
+    "totalSeats": 40,
+    "status": "delayed"
+  },
+  {
+    "id": "SCH-022",
+    "routeId": "SUB-JKT",
+    "departureDate": "2026-05-01T06:00:00",
+    "arrivalDate": "2026-05-01T18:00:00",
+    "availableSeats": 15,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-023",
+    "routeId": "SUB-JKT",
+    "departureDate": "2026-05-01T18:00:00",
+    "arrivalDate": "2026-05-02T06:00:00",
+    "availableSeats": 40,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-024",
+    "routeId": "BDG-JKT",
+    "departureDate": "2026-04-20T08:00:00",
+    "arrivalDate": "2026-04-20T11:00:00",
+    "availableSeats": 12,
+    "totalSeats": 32,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-025",
+    "routeId": "BDG-JKT",
+    "departureDate": "2026-04-20T14:00:00",
+    "arrivalDate": "2026-04-20T17:00:00",
+    "availableSeats": 0,
+    "totalSeats": 32,
+    "status": "cancelled"
+  },
+  {
+    "id": "SCH-026",
+    "routeId": "BDG-JKT",
+    "departureDate": "2026-05-01T08:00:00",
+    "arrivalDate": "2026-05-01T11:00:00",
+    "availableSeats": 25,
+    "totalSeats": 32,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-027",
+    "routeId": "SMG-JKT",
+    "departureDate": "2026-04-23T07:00:00",
+    "arrivalDate": "2026-04-23T14:00:00",
+    "availableSeats": 33,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-028",
+    "routeId": "SMG-JKT",
+    "departureDate": "2026-04-23T20:00:00",
+    "arrivalDate": "2026-04-24T03:00:00",
+    "availableSeats": 5,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-029",
+    "routeId": "SMG-JKT",
+    "departureDate": "2026-05-01T07:00:00",
+    "arrivalDate": "2026-05-01T14:00:00",
+    "availableSeats": 40,
+    "totalSeats": 40,
+    "status": "delayed"
+  },
+  {
+    "id": "SCH-030",
+    "routeId": "SMG-JKT",
+    "departureDate": "2026-05-01T20:00:00",
+    "arrivalDate": "2026-05-02T03:00:00",
+    "availableSeats": 18,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-031",
+    "routeId": "JKT-SUB",
+    "departureDate": "2026-05-03T06:00:00",
+    "arrivalDate": "2026-05-03T18:00:00",
+    "availableSeats": 40,
+    "totalSeats": 40,
+    "status": "on-time"
+  },
+  {
+    "id": "SCH-032",
+    "routeId": "JKT-BDG",
+    "departureDate": "2026-05-03T09:00:00",
+    "arrivalDate": "2026-05-03T12:00:00",
+    "availableSeats": 32,
+    "totalSeats": 32,
+    "status": "on-time"
+  }
+]
