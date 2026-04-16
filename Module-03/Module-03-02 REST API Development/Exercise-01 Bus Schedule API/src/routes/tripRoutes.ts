@@ -31,18 +31,18 @@ router.get('/', (req: Request, res: Response) => {
     return buildTrip(s, route);
   });
 
-  const from   = (req.query.from as string)?.toUpperCase();
-  const to     = (req.query.to as string)?.toUpperCase();
-  const date   = req.query.date as string;
+  const from = (req.query.from as string)?.toUpperCase();
+  const to = (req.query.to as string)?.toUpperCase();
+  const date = req.query.date as string;
   const status = (req.query.status as string)?.toLowerCase();
-  const seats  = parseInt(req.query.seats as string);
-  const limit  = parseInt(req.query.limit as string);
+  const seats = parseInt(req.query.seats as string);
+  const limit = parseInt(req.query.limit as string);
 
-  if (from)           result = result.filter(t => t.originCode === from);
-  if (to)             result = result.filter(t => t.destinationCode === to);
-  if (date)           result = result.filter(t => t.departureDate.startsWith(date));
-  if (status)         result = result.filter(t => t.status === status);
-  if (!isNaN(seats))  result = result.filter(t => t.availableSeats >= seats);
+  if (from) result = result.filter(t => t.originCode === from);
+  if (to) result = result.filter(t => t.destinationCode === to);
+  if (date) result = result.filter(t => t.departureDate.startsWith(date));
+  if (status) result = result.filter(t => t.status === status);
+  if (!isNaN(seats)) result = result.filter(t => t.availableSeats >= seats);
 
   result.sort((a, b) => a.departureDate.localeCompare(b.departureDate));
   if (!isNaN(limit) && limit > 0) result = result.slice(0, limit);
