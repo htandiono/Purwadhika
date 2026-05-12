@@ -1,4 +1,5 @@
 import axios from "axios";
+import { AlertCircle, Database, RefreshCw, UsersRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createUser, deleteUser, getUsers, updateUser, type User } from "./api/users";
 import { UserForm } from "./components/UserForm";
@@ -79,17 +80,33 @@ function App() {
   return (
     <main className="app-shell">
       <section className="content">
-        <div className="heading">
-          <div>
-            <p className="eyebrow">Full-stack CRUD</p>
-            <h1>User Management</h1>
+        <header className="topbar">
+          <div className="brand-block">
+            <div className="brand-mark" aria-hidden="true">
+              <UsersRound size={28} strokeWidth={2.2} />
+            </div>
+            <div>
+              <p className="eyebrow">Directory Console</p>
+              <h1>User Management</h1>
+            </div>
           </div>
-          <button className="button ghost" type="button" onClick={loadUsers}>
-            Refresh
-          </button>
-        </div>
+          <div className="topbar-actions">
+            <span className={`status-pill ${pageError ? "status-warning" : "status-ready"}`}>
+              <span aria-hidden="true" />
+              {pageError ? "API attention" : "API ready"}
+            </span>
+            <button className="icon-button" type="button" onClick={loadUsers} title="Refresh users" aria-label="Refresh users">
+              <RefreshCw size={18} />
+            </button>
+          </div>
+        </header>
 
-        {pageError ? <div className="alert">{pageError}</div> : null}
+        {pageError ? (
+          <div className="alert page-alert">
+            <AlertCircle size={18} />
+            <span>{pageError}</span>
+          </div>
+        ) : null}
 
         <div className="workspace">
           <UserForm
@@ -105,8 +122,14 @@ function App() {
 
           <section className="users-panel">
             <div className="panel-header">
-              <h2>Users</h2>
-              <span>{users.length} total</span>
+              <div>
+                <p className="panel-kicker">Records</p>
+                <h2>Users</h2>
+              </div>
+              <span className="count-pill">
+                <Database size={15} />
+                {users.length} total
+              </span>
             </div>
             <UserList users={users} isLoading={isLoading} onEdit={setEditingUser} onDelete={handleDelete} />
           </section>
