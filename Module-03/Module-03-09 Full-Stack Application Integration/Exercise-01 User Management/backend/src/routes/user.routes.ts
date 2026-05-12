@@ -1,18 +1,10 @@
-import { Router, type NextFunction, type Request, type RequestHandler, type Response } from "express";
+import { Router } from "express";
 import { addUser, editUser, findUser, listUsers, removeUser } from "../controllers/user.controller.js";
 
 export const userRouter = Router();
 
-type AsyncController = (request: Request, response: Response, next: NextFunction) => Promise<unknown> | unknown;
-
-const asyncHandler = (handler: AsyncController): RequestHandler => {
-  return (request, response, next) => {
-    Promise.resolve(handler(request, response, next)).catch(next);
-  };
-};
-
-userRouter.get("/", asyncHandler(listUsers));
-userRouter.get("/:id", asyncHandler(findUser));
-userRouter.post("/", asyncHandler(addUser));
-userRouter.put("/:id", asyncHandler(editUser));
-userRouter.delete("/:id", asyncHandler(removeUser));
+userRouter.get("/", listUsers);
+userRouter.get("/:id", findUser);
+userRouter.post("/", addUser);
+userRouter.put("/:id", editUser);
+userRouter.delete("/:id", removeUser);
