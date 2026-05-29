@@ -66,7 +66,7 @@ export function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-slate-600">
           No account?{" "}
-          <Link className="font-medium text-emerald-700 hover:text-emerald-800" to="/register">
+          <Link className="font-medium text-blue-700 hover:text-blue-800" to="/register">
             Create one
           </Link>
         </p>

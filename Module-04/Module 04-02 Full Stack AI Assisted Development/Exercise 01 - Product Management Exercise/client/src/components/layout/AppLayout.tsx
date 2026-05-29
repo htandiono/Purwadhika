@@ -9,7 +9,7 @@ export function AppLayout() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-[#f4f7fb]">
       <div className="hidden lg:fixed lg:inset-y-0 lg:flex">
         <Sidebar />
       </div>
@@ -31,9 +31,9 @@ export function AppLayout() {
         </div>
       ) : null}
 
-      <div className="lg:pl-64">
+      <div className="lg:pl-72">
         <Header onMenuClick={() => setIsMobileNavOpen(true)} />
-        <main className="px-4 py-6 sm:px-6 lg:px-8">
+        <main className="px-4 py-5 sm:px-6 lg:px-8">
           <Outlet />
         </main>
       </div>

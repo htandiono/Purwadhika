@@ -1,6 +1,13 @@
 import { z } from "zod";
 
-export const productStatuses = ["ACTIVE", "DRAFT", "OUT_OF_STOCK", "ARCHIVED"] as const;
+export const productStatuses = [
+  "ACTIVE",
+  "INACTIVE",
+  "LOW_STOCK",
+  "OUT_OF_STOCK",
+  "DRAFT",
+  "ARCHIVED"
+] as const;
 export const productSortFields = ["name", "sku", "category", "price", "stock", "status", "createdAt"] as const;
 
 export const productIdParamSchema = z.object({

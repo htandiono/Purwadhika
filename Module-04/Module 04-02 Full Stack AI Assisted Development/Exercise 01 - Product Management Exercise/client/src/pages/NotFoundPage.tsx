@@ -7,7 +7,7 @@ export function NotFoundPage() {
         <h1 className="text-2xl font-semibold text-slate-950">Page not found</h1>
         <p className="mt-2 text-sm text-slate-600">The page you requested does not exist.</p>
         <Link
-          className="mt-6 inline-flex h-10 items-center justify-center rounded-md bg-emerald-600 px-4 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+          className="mt-6 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 px-4 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           to="/products"
         >
           Back to dashboard

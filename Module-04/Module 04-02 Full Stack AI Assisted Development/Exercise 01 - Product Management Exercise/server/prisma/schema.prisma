@@ -9,6 +9,8 @@ datasource db {
 
 enum ProductStatus {
   ACTIVE
+  INACTIVE
+  LOW_STOCK
   DRAFT
   OUT_OF_STOCK
   ARCHIVED

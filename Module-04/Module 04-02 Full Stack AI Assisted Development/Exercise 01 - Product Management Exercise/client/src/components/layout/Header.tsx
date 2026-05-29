@@ -1,4 +1,4 @@
-import { Menu, LogOut } from "lucide-react";
+import { LogOut, Menu } from "lucide-react";
 import { Button } from "../ui/Button";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -10,7 +10,7 @@ export function Header({ onMenuClick }: HeaderProps) {
   const { logout, user } = useAuth();
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6">
+    <header className="flex h-14 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6">
       <div className="flex min-w-0 items-center gap-3">
         <Button
           aria-label="Open navigation"
@@ -21,8 +21,8 @@ export function Header({ onMenuClick }: HeaderProps) {
           variant="ghost"
         />
         <div className="min-w-0">
-          <p className="truncate text-sm font-medium text-slate-500">Workspace</p>
-          <h1 className="truncate text-lg font-semibold text-slate-950">Product Dashboard</h1>
+          <p className="truncate text-xs font-semibold uppercase tracking-normal text-blue-600">Dashboard</p>
+          <h1 className="truncate text-base font-semibold text-slate-950">Product Management</h1>
         </div>
       </div>
       <div className="flex min-w-0 items-center gap-3">

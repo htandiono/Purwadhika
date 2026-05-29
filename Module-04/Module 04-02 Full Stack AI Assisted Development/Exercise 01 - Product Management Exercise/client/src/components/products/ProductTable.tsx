@@ -1,4 +1,4 @@
-import { Edit3, Trash2 } from "lucide-react";
+import { Edit3, PackageSearch, Trash2 } from "lucide-react";
 import { Product } from "../../types/product";
 import { formatCurrency } from "../../utils/currency";
 import { Button } from "../ui/Button";
@@ -14,17 +14,23 @@ type ProductTableProps = {
 export function ProductTable({ isLoading = false, onDelete, onEdit, products }: ProductTableProps) {
   return (
     <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+      <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+        <div>
+          <h3 className="text-sm font-semibold text-slate-950">Product inventory</h3>
+          <p className="text-xs text-slate-500">Live data from the product API</p>
+        </div>
+      </div>
       <div className="overflow-x-auto">
-        <table className="min-w-[860px] w-full table-fixed divide-y divide-slate-200">
+        <table className="min-w-[940px] w-full table-fixed divide-y divide-slate-200">
           <thead className="bg-slate-50">
             <tr>
-              <th className="w-[24%] px-4 py-3 text-left text-xs font-semibold uppercase tracking-normal text-slate-500">
+              <th className="w-[25%] px-4 py-3 text-left text-xs font-semibold uppercase tracking-normal text-slate-500">
                 Product
               </th>
-              <th className="w-[14%] px-4 py-3 text-left text-xs font-semibold uppercase tracking-normal text-slate-500">
+              <th className="w-[15%] px-4 py-3 text-left text-xs font-semibold uppercase tracking-normal text-slate-500">
                 SKU
               </th>
-              <th className="w-[16%] px-4 py-3 text-left text-xs font-semibold uppercase tracking-normal text-slate-500">
+              <th className="w-[18%] px-4 py-3 text-left text-xs font-semibold uppercase tracking-normal text-slate-500">
                 Category
               </th>
               <th className="w-[12%] px-4 py-3 text-right text-xs font-semibold uppercase tracking-normal text-slate-500">
@@ -36,7 +42,7 @@ export function ProductTable({ isLoading = false, onDelete, onEdit, products }: 
               <th className="w-[16%] px-4 py-3 text-center text-xs font-semibold uppercase tracking-normal text-slate-500">
                 Status
               </th>
-              <th className="w-[8%] px-4 py-3 text-right text-xs font-semibold uppercase tracking-normal text-slate-500">
+              <th className="w-[9%] px-4 py-3 text-right text-xs font-semibold uppercase tracking-normal text-slate-500">
                 Actions
               </th>
             </tr>
@@ -55,20 +61,30 @@ export function ProductTable({ isLoading = false, onDelete, onEdit, products }: 
             ) : products.length === 0 ? (
               <tr>
                 <td className="px-4 py-12 text-center text-sm text-slate-500" colSpan={7}>
-                  No products found.
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                      <PackageSearch className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-800">No products found</p>
+                      <p className="mt-1 text-slate-500">Adjust the filters or add a new product.</p>
+                    </div>
+                  </div>
                 </td>
               </tr>
             ) : (
               products.map((product) => (
-                <tr className="hover:bg-slate-50" key={product.id}>
+                <tr className="transition hover:bg-blue-50/40" key={product.id}>
                   <td className="px-4 py-4">
                     <p className="truncate text-sm font-medium text-slate-950">{product.name}</p>
                   </td>
                   <td className="px-4 py-4">
-                    <p className="truncate font-mono text-sm text-slate-700">{product.sku}</p>
+                    <p className="truncate rounded bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700">{product.sku}</p>
                   </td>
                   <td className="px-4 py-4">
-                    <p className="truncate text-sm text-slate-700">{product.category}</p>
+                    <span className="inline-flex max-w-full items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+                      <span className="truncate">{product.category}</span>
+                    </span>
                   </td>
                   <td className="px-4 py-4 text-right text-sm font-medium text-slate-950">
                     {formatCurrency(product.price)}

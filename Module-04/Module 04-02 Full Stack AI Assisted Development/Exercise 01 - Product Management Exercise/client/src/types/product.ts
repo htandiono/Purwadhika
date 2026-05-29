@@ -1,4 +1,10 @@
-export type ProductStatus = "ACTIVE" | "DRAFT" | "OUT_OF_STOCK" | "ARCHIVED";
+export type ProductStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | "LOW_STOCK"
+  | "OUT_OF_STOCK"
+  | "DRAFT"
+  | "ARCHIVED";
 
 export type Product = {
   id: string;
