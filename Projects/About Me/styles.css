@@ -11,8 +11,11 @@
   --muted: #77756f;
   --line: rgba(23, 23, 20, 0.18);
   --dark-line: rgba(255, 255, 255, 0.17);
-  --shell: min(1240px, calc(100vw - 80px));
-  --header-height: 82px;
+  --shell: min(
+    clamp(1240px, 66vw, 1680px),
+    calc(100vw - clamp(80px, 7vw, 220px))
+  );
+  --header-height: clamp(82px, 4.2vw, 102px);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -23,8 +26,13 @@
 }
 
 html {
+  /* Keep the original 16px rhythm through common laptop and FHD widths,
+     then scale the complete rem-based type system for native QHD/4K screens. */
+  font-size: clamp(100%, 0.72vw, 125%);
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 24px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -33,8 +41,8 @@ body {
   overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 16px;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -269,13 +277,18 @@ ol {
   line-height: 0.87;
 }
 
+.hero-copy {
+  container-type: inline-size;
+}
+
 .accent-underline {
   position: relative;
   display: inline-block;
   margin-top: 0.13em;
   color: var(--signal-dark);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.92em;
+  font-size: 0.68em;
+  font-size: clamp(0.72em, 11.75cqi, 0.92em);
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.06em;
@@ -453,7 +466,7 @@ ol {
 .proof-grid {
   display: grid;
   min-height: 150px;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(220px, 1.25fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(220px, 1.25fr);
   align-items: stretch;
 }
 
@@ -649,7 +662,7 @@ ol {
 .about-facts dd {
   margin: 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.77rem;
+  font-size: 0.82rem;
   line-height: 1.6;
 }
 
@@ -687,7 +700,7 @@ ol {
 .bridge-node p {
   max-width: 360px;
   color: rgba(255, 255, 255, 0.53);
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   line-height: 1.65;
 }
 
@@ -786,7 +799,7 @@ ol {
 .expertise-card > p {
   margin-top: 16px;
   color: #66645e;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   line-height: 1.65;
 }
 
@@ -801,7 +814,7 @@ ol {
 .expertise-card li {
   padding: 5px 8px;
   border: 1px solid var(--line);
-  font-size: 0.57rem;
+  font-size: 0.69rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -821,7 +834,7 @@ ol {
   background: transparent;
   color: inherit;
   cursor: pointer;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   text-align: left;
@@ -921,7 +934,7 @@ ol {
 
 .recent-heading > div:last-child > p {
   color: rgba(255, 255, 255, 0.54);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.75;
 }
 
@@ -1005,7 +1018,7 @@ ol {
 
 .case-tab small {
   margin-top: 7px;
-  font-size: 0.61rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1047,7 +1060,7 @@ ol {
 .case-copy > p:not(.case-meta) {
   margin-top: 26px;
   color: rgba(255, 255, 255, 0.57);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.75;
 }
 
@@ -1063,7 +1076,7 @@ ol {
   padding: 13px 0;
   border-bottom: 1px solid var(--dark-line);
   color: rgba(255, 255, 255, 0.76);
-  font-size: 0.7rem;
+  font-size: 0.82rem;
 }
 
 .case-points span {
@@ -1097,7 +1110,7 @@ ol {
   background: transparent;
   color: var(--white);
   cursor: pointer;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 850;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -1714,7 +1727,7 @@ ol {
 .tags li {
   padding: 7px 10px;
   border: 1px solid var(--line);
-  font-size: 0.59rem;
+  font-size: 0.68rem;
   font-weight: 850;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1783,7 +1796,7 @@ ol {
 .principle-list p {
   margin-top: 8px;
   color: rgba(23, 23, 20, 0.66);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   line-height: 1.65;
 }
 
@@ -1926,8 +1939,8 @@ ol {
 /* Detail dialog */
 
 .detail-dialog {
-  width: min(840px, calc(100vw - 40px));
-  max-height: min(840px, calc(100vh - 40px));
+  width: min(52.5rem, calc(100vw - 40px));
+  max-height: min(52.5rem, calc(100vh - 40px));
   padding: 0;
   overflow: auto;
   border: 0;
@@ -1970,7 +1983,7 @@ ol {
   border: 1px solid var(--line);
   background: rgba(250, 248, 243, 0.94);
   cursor: pointer;
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   font-weight: 850;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2029,7 +2042,7 @@ ol {
   padding: 10px 0 10px 18px;
   border-bottom: 1px solid var(--line);
   color: #5f5d57;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   line-height: 1.55;
 }
 
@@ -2054,7 +2067,7 @@ ol {
 .dialog-stack span {
   padding: 7px 10px;
   border: 1px solid var(--line);
-  font-size: 0.59rem;
+  font-size: 0.65rem;
   font-weight: 850;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -2202,7 +2215,7 @@ body.dialog-open {
   }
 
   .proof-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .proof-grid > p {
@@ -2720,7 +2733,7 @@ body.dialog-open {
   }
 
   .contact h2 {
-    font-size: 4rem;
+    font-size: clamp(3.35rem, 15vw, 4rem);
   }
 
   .case-tab strong {

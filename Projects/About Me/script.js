@@ -319,7 +319,6 @@ const detailContent = {
       "Improved the accuracy and timeliness of operational data",
     ],
     stack: ["Android", "Barcode", "SQL Server", "MS Access", "Field operations"],
-    note: "These details come from the 2017 CV and are presented as career foundations, not as claims about a current production stack.",
   },
   gis: {
     kicker: "Career foundation / GIS",
@@ -339,7 +338,6 @@ const detailContent = {
       "Bridged domain experts, data, and technical implementation",
     ],
     stack: ["MapInfo", "MS Access", "SQL", "GIS", "Automation"],
-    note: "The public page describes the capability and domain context; it does not expose proprietary maps or company datasets.",
   },
   research: {
     kicker: "Career foundation / R&D",
@@ -360,7 +358,6 @@ const detailContent = {
       "Built practical trust between operations and technology teams",
     ],
     stack: ["SQL Server", "MS Access", "VBA", "DSS", "Research data"],
-    note: "This is deliberately described as decision-support and research software. The historical CV does not support presenting it as modern AI or machine-learning delivery.",
   },
 };
 
@@ -400,7 +397,13 @@ const openDetail = (id, trigger) => {
     badge.textContent = item;
     return badge;
   }));
-  dialogNote.textContent = content.note;
+  if (content.note) {
+    dialogNote.textContent = content.note;
+    dialogNote.hidden = false;
+  } else {
+    dialogNote.textContent = "";
+    dialogNote.hidden = true;
+  }
 
   lastModalTrigger = trigger;
   document.body.classList.add("dialog-open");
