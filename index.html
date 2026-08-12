@@ -19,20 +19,36 @@
     <div class="container">
         <header>
             <h1>My Learning Journey</h1>
-            <p>A dynamic index of all my modules and exercises</p>
+            <p>A curated index of my projects, modules, and exercises</p>
         </header>
 
-        <main id="modules-container">
-            <!-- Loading indicator -->
-            <div id="loader" class="loader">
-                <div class="spinner"></div>
-                <p>Fetching repository data from GitHub API...</p>
-            </div>
-            <!-- Modules will be dynamically injected here -->
+        <main>
+            <section class="featured-projects" aria-labelledby="projects-title">
+                <article class="module-card project-card">
+                    <h2 class="module-title" id="projects-title">Selected Projects</h2>
+                    <div class="exercise-list">
+                        <a class="exercise-link project-link" href="./Projects/about-me/">
+                            <span>
+                                <strong>About Me</strong>
+                                <small>Professional profile and selected technical work</small>
+                            </span>
+                        </a>
+                    </div>
+                </article>
+            </section>
+
+            <section id="modules-container" aria-label="Learning modules">
+                <!-- Loading indicator -->
+                <div id="loader" class="loader">
+                    <div class="spinner"></div>
+                    <p>Preparing published modules...</p>
+                </div>
+                <!-- Modules will be dynamically injected here -->
+            </section>
         </main>
 
         <footer>
-            <p>Built with Vanilla JS and the GitHub REST API</p>
+            <p>Built with Vanilla JS · Curated from this repository</p>
         </footer>
     </div>
 

@@ -1,10 +1,15 @@
-name: Deploy About Me to GitHub Pages
+name: Deploy Purwadhika to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - "Projects/About Me/**"
+      - "index.html"
+      - "style.css"
+      - "script.js"
+      - "Module-*/**"
+      - "Projects/**"
+      - "scripts/assemble-pages.mjs"
       - ".github/workflows/deploy-about-me.yml"
   workflow_dispatch:
 
@@ -30,10 +35,13 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Assemble public site
+        run: node scripts/assemble-pages.mjs _site
+
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "Projects/About Me"
+          path: "_site"
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -16,4 +16,4 @@ Serve this directory with any static HTTP server, then open its root URL. Openin
 
 ## Public deployment
 
-The repository workflow publishes this directory as the root artifact for GitHub Pages whenever relevant files are pushed to `main`.
+The repository workflow publishes this directory at `/Projects/about-me/` while preserving the repository landing page at the GitHub Pages root.

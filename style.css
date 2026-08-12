@@ -111,10 +111,47 @@ header p {
 }
 
 /* Modules Grid */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 #modules-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.project-card {
+    border-color: rgba(163, 113, 247, 0.35);
+    background:
+        linear-gradient(135deg, rgba(255, 123, 114, 0.08), rgba(163, 113, 247, 0.08)),
+        var(--card-bg);
+}
+
+.project-link span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.project-link strong {
+    font-size: 1.05rem;
+}
+
+.project-link small {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 400;
+}
+
+.project-link:hover small {
+    color: var(--text-primary);
+}
+
+.module-note {
+    color: var(--text-secondary);
 }
 
 .module-card {
@@ -137,14 +174,14 @@ header p {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: var(--white);
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .module-title::before {
-    content: "📁";
+    content: "▣";
     font-size: 1.2rem;
 }
 
