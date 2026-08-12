@@ -32,7 +32,11 @@ const copyDirectory = async (source, destination) => {
 };
 
 await rm(outputRoot, { recursive: true, force: true });
-await mkdir(join(outputRoot, "Projects", "about-me"), { recursive: true });
+await Promise.all(
+  ["about-me", "company-profile"].map((projectRoute) =>
+    mkdir(join(outputRoot, "Projects", projectRoute), { recursive: true }),
+  ),
+);
 
 await Promise.all(
   ["index.html", "style.css", "script.js"].map((file) =>
@@ -61,6 +65,10 @@ for (const publishedDirectory of publishedModuleDirectories) {
 await copyDirectory(
   join(repositoryRoot, "Projects", "About Me"),
   join(outputRoot, "Projects", "about-me"),
+);
+await copyDirectory(
+  join(repositoryRoot, "Projects", "Eventure Profile"),
+  join(outputRoot, "Projects", "company-profile"),
 );
 await writeFile(join(outputRoot, ".nojekyll"), "");
 
