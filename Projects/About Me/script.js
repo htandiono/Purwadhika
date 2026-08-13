@@ -160,7 +160,7 @@ copyButton?.addEventListener("click", async () => {
     copyStatus.textContent = "Email copied to your clipboard.";
     copyButton.querySelector("strong").textContent = "Copied";
   } catch {
-    copyStatus.textContent = `Copy unavailable — email ${email} directly.`;
+    copyStatus.textContent = `Copy failed. Email ${email} directly.`;
   }
 
   window.setTimeout(() => {
@@ -172,9 +172,9 @@ copyButton?.addEventListener("click", async () => {
 const detailContent = {
   frontend: {
     kicker: "Expertise 01 / Frontend",
-    title: "Interfaces that make complex systems feel clear.",
+    title: "Frontend work should make the next step obvious.",
     summary:
-      "I treat frontend work as product engineering: information hierarchy, responsive behavior, state, validation, accessibility, and the API contract all have to support the same user task.",
+      "I build React and Next.js interfaces for day-to-day product work, including forms, loading states, errors, keyboard navigation, and API-driven data.",
     leftTitle: "Core capabilities",
     left: [
       "Responsive product and administration interfaces",
@@ -189,13 +189,13 @@ const detailContent = {
       "Shared design and data contracts in collaborative monorepos",
     ],
     stack: ["React", "Next.js", "TypeScript", "CSS", "React Query", "Zod"],
-    note: "The goal is not visual novelty for its own sake. It is a product that feels obvious to use and remains understandable to the team maintaining it.",
+    note: "Users should know what to do next, and maintainers should be able to follow the code.",
   },
   mobile: {
     kicker: "Expertise 02 / Mobile",
-    title: "Cross-platform mobile work that respects the device.",
+    title: "Mobile apps that use health data without constant location tracking.",
     summary:
-      "My recent mobile work combines React Native product delivery with native health-data access, secure local storage, background synchronization, and practical release packaging.",
+      "For Langkah Sehat, I used React Native and Expo with Health Connect, HealthKit, secure local storage, background sync, and a signed Android build.",
     leftTitle: "Core capabilities",
     left: [
       "Expo and React Native application architecture",
@@ -211,13 +211,13 @@ const detailContent = {
       "Keep Android delivery practical while retaining an iOS path",
     ],
     stack: ["React Native", "Expo", "TypeScript", "Health Connect", "HealthKit", "EAS"],
-    note: "Langkah Sehat was delivered as a signed evaluation APK. Its production employee deployment still requires live identity and database credentials.",
+    note: "The current Langkah Sehat APK is an evaluation build. A production release still needs live Clerk, Neon, and API credentials.",
   },
   backend: {
     kicker: "Expertise 03 / Backend",
-    title: "Business rules deserve more than a happy-path API.",
+    title: "APIs need to handle the failure path too.",
     summary:
-      "I structure backend work around explicit contracts, authorization, ownership, validation, transactional boundaries, and recovery when a workflow does not finish as planned.",
+      "I define authorization, ownership, validation, and transaction boundaries before implementing a workflow, then decide what should happen when a step fails.",
     leftTitle: "Core capabilities",
     left: [
       "REST APIs with schema validation and clear error responses",
@@ -228,17 +228,17 @@ const detailContent = {
     rightTitle: "Applied recently",
     right: [
       "Serializable checkout and conditional seat updates in Eventure",
-      "Atomic lifecycle restoration after cancellation or rejection",
+      "Restore seats, vouchers, coupons, and points together after cancellation or rejection",
       "Registration approval and administrative actions in Langkah Sehat",
     ],
     stack: ["Node.js", "Express", "TypeScript", "REST", "RBAC", "Zod"],
-    note: "Reliability is treated as a user-facing feature: a failed request should not leave inventory, points, or access rules in an ambiguous state.",
+    note: "When a request fails, inventory, points, and permissions should still end in a known state.",
   },
   data: {
     kicker: "Expertise 04 / Data",
-    title: "A database foundation shaped by operations, not demos.",
+    title: "Database work grounded in day-to-day operations.",
     summary:
-      "My background spans sales analysis, retail databases, agricultural research data, GIS workflows, and current relational product models. That experience makes data integrity part of design from the beginning.",
+      "I started with retail and agricultural data, then moved into GIS automation and relational product models. That background makes me pay close attention to constraints, ownership, and reporting needs.",
     leftTitle: "Core capabilities",
     left: [
       "Relational modeling for operational domains",
@@ -254,13 +254,13 @@ const detailContent = {
       "Events, ticket inventory, employee wellbeing, and competitions",
     ],
     stack: ["PostgreSQL", "Prisma", "SQL Server", "MS Access", "Python", "MapInfo"],
-    note: "The strongest database is not the most complicated one. It is the one that represents the real workflow accurately and protects the invariants the business depends on.",
+    note: "I prefer the simplest schema that matches the workflow and protects the rules the business relies on.",
   },
   "langkah-sehat": {
     kicker: "Recent build 01 / Mobile + Admin",
     title: "Langkah Sehat",
     summary:
-      "A branded company step-tracking platform designed for employee participation, health-data efficiency, credible competitions, and practical administration.",
+      "A company step-tracking app and admin portal with onboarding, leaderboards, competitions, department management, and health-data sync.",
     leftTitle: "Product scope",
     left: [
       "Employee onboarding, profiles, leaderboards, and competitions",
@@ -268,7 +268,7 @@ const detailContent = {
       "Health-data synchronization with duplicate-count protection",
       "Anti-cheat rules and Jakarta-aware competition dates",
     ],
-    rightTitle: "Delivery evidence",
+    rightTitle: "What is running",
     right: [
       "Cross-platform Expo / React Native mobile architecture",
       "Signed Android evaluation APK with validated package contents",
@@ -276,18 +276,18 @@ const detailContent = {
       "Shared core and database foundations in a pnpm monorepo",
     ],
     stack: ["Expo", "React Native", "Next.js", "TypeScript", "Clerk", "Neon", "Vercel"],
-    note: "Scope note: the released APK is a demo/evaluation build. Production Clerk, Neon, and API configuration was not supplied, so it is not presented as a production-connected employee release.",
+    note: "The APK is an evaluation build. Production use requires live Clerk, Neon, and API credentials.",
   },
   eventure: {
     kicker: "Recent build 02 / Collaborative platform",
     title: "Eventure",
     summary:
-      "A collaborative event-management monorepo covering discovery, organizer workflows, tickets, promotions, points, checkout, payment proof, transaction lifecycle, and reviews.",
+      "A shared event platform with discovery, organizer tools, ticketing, promotions, points, checkout, payment proof, and reviews.",
     leftTitle: "System design",
     left: [
       "Next.js frontend, Express API, shared contracts, and Prisma database package",
-      "Twelve-model relational domain for events and transactions",
-      "Role-based access followed by resource ownership enforcement",
+      "Prisma schema with 12 models covering users, events, tickets, transactions, and reviews",
+      "Role checks plus ownership checks for organizer resources",
       "Search debounce with stale-request cancellation",
     ],
     rightTitle: "Reliability work",
@@ -295,10 +295,10 @@ const detailContent = {
       "Serializable checkout with conditional seat decrements",
       "Integer-rupiah voucher, coupon, and points calculations",
       "Atomic restoration of seats and benefits across lifecycle changes",
-      "Hosted transaction diagnosis and reversible production verification",
+      "Production checkout debugging with seat counts restored after each test",
     ],
     stack: ["Next.js", "React", "Express", "TypeScript", "Prisma", "PostgreSQL", "Vercel"],
-    note: "Eventure is a shared project. This portfolio presents the system areas and engineering work without claiming sole authorship or hiding known implementation limitations.",
+    note: "Eventure is a shared project. These notes describe the areas I worked on and do not claim sole authorship.",
   },
   traceability: {
     kicker: "Career foundation / Field systems",
@@ -312,11 +312,11 @@ const detailContent = {
       "Traceability database development",
       "Prototypes grounded in direct observation of field workflows",
     ],
-    rightTitle: "Lasting value",
+    rightTitle: "What it connected",
     right: [
-      "Reduced manual transcription between field and office",
+      "Moved field records into a structured workflow",
       "Connected physical activities to structured records",
-      "Improved the accuracy and timeliness of operational data",
+      "Made field records available for office review",
     ],
     stack: ["Android", "Barcode", "SQL Server", "MS Access", "Field operations"],
   },
@@ -324,14 +324,14 @@ const detailContent = {
     kicker: "Career foundation / GIS",
     title: "Automated mapping for research operations",
     summary:
-      "A custom mapping workflow combined GIS software and operational databases to make repeatable spatial analysis more efficient for a genetic research center.",
+      "A custom mapping workflow combined GIS software and operational databases for repeatable spatial analysis at a genetic research center.",
     leftTitle: "Work covered",
     left: [
       "Automated map production from structured operational data",
       "MapInfo workflows connected with database records",
       "Spatial analysis support for research and planning",
     ],
-    rightTitle: "Lasting value",
+    rightTitle: "What the tool did",
     right: [
       "Turned repetitive mapping steps into a reusable process",
       "Linked spatial outputs with source records",
@@ -351,11 +351,11 @@ const detailContent = {
       "Decision-support components for fertilizer recommendations",
       "Analysis of ground-level workflows before system design",
     ],
-    rightTitle: "Lasting value",
+    rightTitle: "What it supported",
     right: [
-      "Improved data collection accuracy and processing efficiency",
+      "Supported structured data collection and analysis",
       "Translated research requirements into technical specifications",
-      "Built practical trust between operations and technology teams",
+      "Documented field and laboratory requirements for the implementation team",
     ],
     stack: ["SQL Server", "MS Access", "VBA", "DSS", "Research data"],
   },

@@ -7,15 +7,6 @@ const publishedModules = [
         ],
     },
     {
-        name: "Module-02-03",
-        exercises: [
-            {
-                name: "Exercise-01-Profile-Page",
-                href: "./Module-02-03/Exercise-01-Profile-Page/dist/index.html",
-            },
-        ],
-    },
-    {
         name: "Module-02-04",
         exercises: [
             {
@@ -62,12 +53,12 @@ const publishedModules = [
     },
     {
         name: "Module-03",
-        note: "Back-end, REST API, database, ORM, and full-stack coursework — no standalone static build is published yet.",
+        note: "Back-end, REST API, database, ORM, and full-stack coursework. No standalone browser build is published yet.",
         exercises: [],
     },
     {
         name: "Module-04",
-        note: "AI-assisted full-stack coursework — no standalone static build is published yet.",
+        note: "Full-stack product development coursework. No standalone browser build is published yet.",
         exercises: [],
     },
 ];

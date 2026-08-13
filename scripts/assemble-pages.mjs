@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, rm, stat, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -16,6 +16,7 @@ const excludedNames = new Set([
   ".git",
   ".github",
   ".vscode",
+  "README.md",
   "tmp",
 ]);
 const shouldCopy = (source) => {
@@ -47,13 +48,40 @@ await Promise.all(
 const publishedModuleDirectories = [
   "Module-02-02/Exercise-01",
   "Module-02-02/Exercise-02",
-  "Module-02-03/Exercise-01-Profile-Page/dist",
   "Module-02-04/Exercise-01-Todo-List/dist",
   "Module-02-05/Exercise-01-Todo-List/dist",
   "Module-02-06/Exercise-01-Todo-List-Improved/dist",
   "Module-02-07/Exercise-02-Todo-List-with-Login/dist",
   "Module-02-08/Exercise-01-Todo-List-with-Backendless/dist",
 ];
+
+const publishedModuleRoutes = publishedModuleDirectories.map((directory) =>
+  `./${directory.replaceAll("\\", "/")}/index.html`,
+);
+const rootScript = await readFile(join(outputRoot, "script.js"), "utf8");
+
+for (const route of publishedModuleRoutes) {
+  if (!rootScript.includes(route)) {
+    throw new Error(`Published module is missing from the root manifest: ${route}`);
+  }
+}
+
+const manifestRoutes = [...rootScript.matchAll(/href:\s*"(\.\/Module-[^"]+)"/g)].map(
+  ([, route]) => route,
+);
+for (const route of manifestRoutes) {
+  if (!publishedModuleRoutes.includes(route)) {
+    throw new Error(`Root manifest points outside the published module allowlist: ${route}`);
+  }
+}
+for (const route of publishedModuleRoutes) {
+  const sourceIndex = join(repositoryRoot, ...route.slice(2).split("/"));
+  const sourceStats = await stat(sourceIndex).catch(() => null);
+
+  if (!sourceStats?.isFile()) {
+    throw new Error(`Published module entry point is missing: ${sourceIndex}`);
+  }
+}
 
 for (const publishedDirectory of publishedModuleDirectories) {
   await copyDirectory(
@@ -74,6 +102,17 @@ await writeFile(join(outputRoot, ".nojekyll"), "");
 
 let fileCount = 0;
 let totalBytes = 0;
+const inspectedTextExtensions = new Set([
+  ".css",
+  ".htm",
+  ".html",
+  ".js",
+  ".json",
+  ".md",
+  ".svg",
+  ".txt",
+  ".xml",
+]);
 
 const inspectOutput = async (directory) => {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -90,6 +129,16 @@ const inspectOutput = async (directory) => {
 
     if (entry.isSymbolicLink()) {
       throw new Error(`Symbolic links are not allowed in the Pages artifact: ${entryPath}`);
+    }
+
+    const extension = entry.name.includes(".")
+      ? entry.name.slice(entry.name.lastIndexOf(".")).toLowerCase()
+      : "";
+    if (inspectedTextExtensions.has(extension)) {
+      const content = await readFile(entryPath, "utf8");
+      if (content.includes(String.fromCodePoint(0x2014))) {
+        throw new Error(`Prohibited punctuation found in public file: ${entryPath}`);
+      }
     }
 
     fileCount += 1;

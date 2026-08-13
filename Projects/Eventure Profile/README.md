@@ -6,4 +6,4 @@ Published at:
 
 `https://htandiono.github.io/Purwadhika/Projects/company-profile/`
 
-The interactive source remains in the sibling `Company Profile` workspace and is deployed separately through Sites. This directory contains the framework-free HTML, CSS, and image assets used by the Purwadhika repository's single GitHub Pages artifact.
+This directory contains the static HTML, CSS, and image assets used for the GitHub Pages edition.

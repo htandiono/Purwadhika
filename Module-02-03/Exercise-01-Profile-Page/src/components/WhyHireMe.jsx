@@ -30,7 +30,7 @@ const WhyHireMe = () => {
                         transition={{ delay: 0.1 }}
                         className="mt-4 text-slate-600"
                     >
-                        I don't just write code — I understand how systems need to work in real-life operations.
+                        I understand how software needs to work in day-to-day operations.
                     </motion.p>
                 </div>
 

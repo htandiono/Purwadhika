@@ -18,7 +18,7 @@ const Hero = () => {
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">scalable digital systems.</span>
                     </h1>
                     <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl">
-                        I help businesses turn complex workflows into simple, automated solutions. With 12+ years of experience, I design and develop complete end-to-end systems — backend, frontend, mobile apps, APIs, and databases.
+                        I build web and mobile applications, APIs, and databases. My background in field operations and research helps me understand how the software will be used day to day.
                     </p>
                 </motion.div>
 

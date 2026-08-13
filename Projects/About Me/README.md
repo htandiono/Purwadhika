@@ -1,14 +1,6 @@
-# Hendrik Tandiono — About Me
+# Hendrik Tandiono: About Me
 
-A handcrafted, responsive single-page portfolio built with semantic HTML, CSS, and vanilla JavaScript.
-
-## Content sources
-
-- Hendrik Tandiono's 2017 CV for durable career, education, and project facts.
-- The earlier `Exercise-01-Profile-Page` portfolio for current public contact details and positioning.
-- Verified recent project work from Langkah Sehat and Eventure for the modern technical profile.
-
-Private CV details such as a home address, birth date, and phone number are intentionally excluded from the public site.
+A responsive single-page portfolio built with semantic HTML, CSS, and vanilla JavaScript.
 
 ## Local preview
 
